@@ -1,0 +1,178 @@
+<header class="site-header">
+  <nav class="navigation container" aria-label="Navegación principal">
+    <a class="brand" href="#inicio" aria-label="ComparaSalud, inicio">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>ComparaSalud</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#proveedores">Proveedores</a>
+      <a href="#about">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <a class="login-link" routerLink="/login">Iniciar sesión</a>
+      <a class="button button-small button-primary" routerLink="/registro">Registrarse</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-content container">
+      <div class="hero-copy">
+        <p class="eyebrow">Tu salud, tus decisiones</p>
+        <h1>Transparencia <span>en tu salud</span></h1>
+        <p class="hero-description">
+          Toma decisiones informadas sobre tu salud comparando precios,
+          calificaciones y disponibilidad de servicios médicos en tiempo real.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" routerLink="/registro">Comenzar gratis</a>
+          <a class="button button-outline" href="#como-funciona">Ver demo</a>
+        </div>
+        <div class="stats" aria-label="ComparaSalud en cifras">
+          <div><strong>50K+</strong><span>Pacientes activos</span></div>
+          <div><strong>2.5K+</strong><span>Servicios</span></div>
+          <div><strong>4.8<span class="star">★</span></strong><span>Calificación</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Ejemplo de resultados de búsqueda">
+        <span class="floating-shape shape-blue" aria-hidden="true"></span>
+        <span class="floating-shape shape-purple" aria-hidden="true"></span>
+        <div class="search-card">
+          <div class="search-card-header">
+            <a class="brand brand-compact" href="#inicio">
+              <span class="brand-mark" aria-hidden="true"><span></span></span>
+              <span>ComparaSalud</span>
+            </a>
+            <span class="search-icon" aria-hidden="true">⌕</span>
+          </div>
+          <form class="search-field" (submit)="search($event)">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" name="query" placeholder="Buscar médico, especialidad..." aria-label="Buscar médico o especialidad" />
+            <button type="submit" class="search-submit" aria-label="Buscar">⌕</button>
+          </form>
+
+          <article class="doctor-card doctor-featured">
+            <span class="doctor-avatar avatar-green" aria-hidden="true">MG</span>
+            <div class="doctor-info">
+              <h2>Dr. María González</h2>
+              <p>Servicio Cardiología <span>•</span> 4.9★</p>
+              <strong>S/ 120 examen del corazón</strong>
+            </div>
+            <span class="availability available">Disponible</span>
+          </article>
+          <article class="doctor-card">
+            <span class="doctor-avatar avatar-blue" aria-hidden="true">CR</span>
+            <div class="doctor-info">
+              <h2>Dr. Carlos Ruiz</h2>
+              <p>Servicio Dental <span>•</span> 4.7★</p>
+              <strong>S/ 80 servicio de limpieza</strong>
+            </div>
+            <span class="availability tomorrow">Mañana</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro section" id="beneficios">
+    <div class="container section-heading">
+      <p class="eyebrow">Una mejor experiencia</p>
+      <h2>Transformamos tu experiencia en salud</h2>
+      <p>Conectamos pacientes con los mejores proveedores de servicios médicos mediante transparencia y tecnología.</p>
+    </div>
+    <div class="container feature-grid">
+      <article class="feature-card">
+        <span class="feature-icon icon-blue" aria-hidden="true">↔</span>
+        <h3>Compara precios</h3>
+        <p>Consulta costos claros de consultas, exámenes y tratamientos antes de elegir.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon icon-green" aria-hidden="true">★</span>
+        <h3>Elige con confianza</h3>
+        <p>Revisa calificaciones y opiniones de otros pacientes para tomar una decisión informada.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon icon-purple" aria-hidden="true">◷</span>
+        <h3>Encuentra disponibilidad</h3>
+        <p>Encuentra opciones disponibles y ahorra tiempo al buscar atención médica.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="how-section section" id="como-funciona">
+    <div class="container how-layout">
+      <div class="section-copy">
+        <p class="eyebrow">Simple y transparente</p>
+        <h2>Encontrar atención de calidad es más fácil</h2>
+        <p>En pocos pasos puedes comparar opciones y elegir la atención que mejor se adapte a ti.</p>
+        <a class="text-link" href="#registro">Empieza tu búsqueda <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="step-number">01</span>
+          <div><h3>Busca lo que necesitas</h3><p>Escribe una especialidad, servicio médico o medicamento.</p></div>
+        </article>
+        <article class="step">
+          <span class="step-number">02</span>
+          <div><h3>Compara tus opciones</h3><p>Revisa precios, calificaciones y disponibilidad en un solo lugar.</p></div>
+        </article>
+        <article class="step">
+          <span class="step-number">03</span>
+          <div><h3>Elige y conecta</h3><p>Selecciona el proveedor adecuado y coordina tu atención.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="providers-section section" id="proveedores">
+    <div class="container providers-layout">
+      <div class="provider-illustration" aria-hidden="true">
+        <span class="provider-cross">+</span>
+        <span class="provider-circle">CS</span>
+        <span class="provider-sparkle">✦</span>
+      </div>
+      <div class="section-copy">
+        <p class="eyebrow">Para profesionales de la salud</p>
+        <h2>Haz crecer tu servicio con ComparaSalud</h2>
+        <p>Conecta con nuevos pacientes, comparte tus servicios y ayuda a las personas a encontrar la atención que necesitan.</p>
+        <a class="button button-primary" routerLink="/registro">Quiero ser proveedor</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section section" id="about">
+    <div class="container about-content">
+      <p class="eyebrow">Acerca de ComparaSalud</p>
+      <h2>La salud merece decisiones más claras</h2>
+      <p>Creemos que encontrar servicios médicos debe ser sencillo, transparente y accesible. Por eso reunimos información útil para que pacientes y proveedores se conecten mejor.</p>
+    </div>
+  </section>
+
+  <section class="signup-section" id="registro">
+    <div class="container signup-content">
+      <div>
+        <p class="eyebrow">Empieza hoy</p>
+        <h2>Encuentra la atención que mereces</h2>
+        <p>Compara opciones de salud de forma simple y toma el control de tus decisiones.</p>
+      </div>
+      <a class="button button-light" routerLink="/registro">Crear mi cuenta <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>ComparaSalud</span>
+    </a>
+    <p>© 2026 ComparaSalud. Tu salud, tus decisiones.</p>
+    <a href="mailto:hola@comparasalud.pe">Contáctanos</a>
+  </div>
+</footer>

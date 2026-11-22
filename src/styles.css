@@ -1,24 +1,126 @@
-* {
-  box-sizing: border-box;
-}
+/*primay:azul, accent:rosa, warn: rojo*/
+/* You can add global styles to this file, and also import other style files */
 
-html {
-  scroll-behavior: smooth;
+/* ---------- Estilos compartidos por las pantallas del cliente ---------- */
+:root {
+  --cs-azul: #2563eb;
+  --cs-verde: #10b981;
+  --cs-degradado: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
 }
-
-body {
-  min-width: 320px;
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 96px;
+}
+.pagina h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 700;
+}
+.pagina .subtitulo {
+  margin: 0 0 20px;
+  color: #6b7280;
+}
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.vacio {
+  grid-column: 1 / -1;
+  padding: 40px 16px;
+  text-align: center;
+  color: #6b7280;
+}
+.vacio mat-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+  color: #9ca3af;
+}
+/* cabecera de una tarjeta: icono + títulos + acción */
+.cabecera {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.cabecera .titulos {
+  flex: 1;
+  min-width: 0;
+}
+.cabecera h3 {
   margin: 0;
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  font-weight: 600;
 }
-
-button,
-input {
-  font: inherit;
+.cabecera p {
+  margin: 2px 0 0;
+  color: #6b7280;
+  font-size: 14px;
 }
-
-::selection {
-  color: #fff;
-  background: #2385c9;
+.icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: var(--cs-azul);
+}
+.icono.verde {
+  background: #ecfdf5;
+  color: var(--cs-verde);
+}
+/* etiquetas pequeñas (distrito, stock) */
+.etiqueta {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+.etiqueta.ok {
+  background: #ecfdf5;
+  color: #047857;
+}
+.etiqueta.poco {
+  background: #fffbeb;
+  color: #b45309;
+}
+.etiqueta.agotado {
+  background: #fef2f2;
+  color: #dc2626;
+}
+.precio {
+  font-weight: 700;
+  color: var(--cs-azul);
+}
+/* corazón / estrellas de Material Symbols rellenos */
+.relleno {
+  font-variation-settings: 'FILL' 1;
+}
+.favorito-activo {
+  color: #ef4444;
+}
+.estrella {
+  color: #fbbf24;
+}
+/* tablas simples dentro de los diálogos */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.tabla th,
+.tabla td {
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+.tabla th {
+  color: #6b7280;
+  font-weight: 500;
 }

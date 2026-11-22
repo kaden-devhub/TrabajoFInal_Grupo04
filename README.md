@@ -1,59 +1,34 @@
-# ComparaSalud
+# ComparaSalud – Frontend Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.5.
+Angular 22 + Angular Material (misma base que `appproveedores` y la estructura de `ComparaSalud`).
+Incluye solo: barra de navegación por rol, **login** y **registro** conectados al backend con seguridad
+(`comparasalud_backend_con_seguridad`). Las demás pantallas son componentes de relleno ("... works!").
 
-## Development server
+## Ejecutar
+1. Levantar el backend (`http://localhost:8088`, ya permite CORS desde `http://localhost:4200`).
+2. En esta carpeta:
+   ```
+   npm install
+   ng serve        (o npm start)
+   ```
+3. Abrir http://localhost:4200
 
-To start a local development server, run:
+La URL del backend está en `src/app/environments/environment.ts` (`apiUrl`).
 
-```bash
-ng serve
-```
+## Qué hace
+- **Login** (`/login`): elige Cliente / Farmacia / Admin y llama a `POST /api/{clientes|farmacias|administradores}/login`.
+  Guarda `{rol, id, nombre, token}` en `sessionStorage`; el interceptor envía `Authorization: Bearer <token>`.
+- **Registro** (`/registro`): cliente (`POST /api/clientes`) o farmacia (`POST /api/farmacias`); al terminar inicia sesión solo.
+  El backend valida y devuelve la lista de errores, que se muestra en el formulario.
+- **Barra de navegación**: cambia según el rol. Cerrar sesión borra el token del navegador (el backend no tiene logout).
+- **Guard por rol** (`role.guard.ts`): sin sesión va a `/login`; con otro rol va a la pantalla de su propio rol.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Rutas por rol
+| Rol | Rutas |
+|---|---|
+| Público | `/` · `/login` · `/registro` |
+| CLIENTE | `/cliente/buscar` · `/cliente/ofertas` · `/cliente/farmacias` · `/cliente/favoritos` · `/cliente/cuenta` |
+| FARMACIA | `/farmacia/ofertas` · `/farmacia/medicamentos` · `/farmacia/perfil` |
+| ADMINISTRADOR | `/admin/resumen` · `/admin/categorias` · `/admin/farmacias` · `/admin/clientes` · `/admin/medicamentos` |
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Administrador del backend: `admin@comparasalud.com` / `admin123` (se crea al iniciar el backend).

@@ -1,4 +1,4 @@
-export class Favorito {
+export class MedicamentoFavorito {
   id: number;
   nombre: string;
   nombreComercial?: string;

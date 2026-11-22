@@ -1,10 +1,10 @@
-import { inject, Service } from '@angular/core';
+import { inject, Injectable, Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/enviroments';
 import { Cliente, ClientePublico } from '../model/cliente';
 import { Observable } from 'rxjs';
 
-@Service()
+@Injectable()
 export class ClienteService {
   private http = inject(HttpClient);
   private url = environment.apiUrl;

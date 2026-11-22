@@ -16,7 +16,7 @@ export class FavoritoService {
 
   // Asignar medicamento favorito a un cliente especifico
 
-  insert(idCliente: number, idMedicamento: number): Observable<unknown> {
+  insertMed(idCliente: number, idMedicamento: number): Observable<unknown> {
     return this.http.post(`${this.url}/${idCliente}/medicamentos-favoritos`, { idMedicamento });
   }
 
@@ -28,7 +28,21 @@ export class FavoritoService {
     );
   }
 
+  // Buscar farmacias favoritos del cliente
 
+  favoriteFarm(idCliente: number): Observable<FarmaciaFavorita[]> {
+    return this.http.get<FarmaciaFavorita[]>(`${this.url}/${idCliente}/farmacias-favoritas`);
+  }
 
+  // Asignar farmacia favorita a un cliente especifico
 
+  insertFarm(idCliente: number, idMedicamento: number): Observable<unknown> {
+    return this.http.post(`${this.url}/${idCliente}/medicamentos-favoritos`, { idMedicamento });
+  }
+
+  // Eliminar farmacia de la lista de favoritos
+
+  deleteFarmFav(idCliente: number, idFarmacia: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${idCliente}/farmacias-favoritas/${idFarmacia}`);
+  }
 }

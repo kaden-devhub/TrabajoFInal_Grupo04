@@ -5,14 +5,18 @@ import { AdminCategoriasComponent } from './componentes/admin-categorias-compone
 import { AdminClientesComponent } from './componentes/admin-clientes-component/admin-clientes-component';
 import { AdminFarmaciasComponent } from './componentes/admin-farmacias-component/admin-farmacias-component';
 import { AdminMedicamentosComponent } from './componentes/admin-medicamentos-component/admin-medicamentos-component';
+import { AuthComponent } from './componentes/auth-component/auth-component';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'admin/resumen', component: AdminResumenComponent, data: { roles: ['ADMINISTRADOR'] } },
-  { path: 'admin/categorias', component: AdminCategoriasComponent, data: { roles: ['ADMINISTRADOR'] } },
-  { path: 'admin/farmacias', component: AdminFarmaciasComponent, data: { roles: ['ADMINISTRADOR'] } },
-  { path: 'admin/clientes', component: AdminClientesComponent, data: { roles: ['ADMINISTRADOR'] } },
-    { path: 'admin/medicamentos', component: AdminMedicamentosComponent, data: { roles: ['ADMINISTRADOR'] } },
+  { path: 'login', component: AuthComponent, data: { modo: 'login'}},
+  { path: 'registro', component: AuthComponent, data: { modo: 'registro'}},
+  { path: 'admin/resumen', component: AdminResumenComponent, canActivate : [authGuard],data: { roles: ['ADMINISTRADOR'] } },
+  { path: 'admin/categorias', component: AdminCategoriasComponent , canActivate : [authGuard], data: { roles: ['ADMINISTRADOR'] } },
+  { path: 'admin/farmacias', component: AdminFarmaciasComponent, canActivate: [authGuard], data: { roles: ['ADMINISTRADOR'] } },
+  { path: 'admin/clientes', component: AdminClientesComponent, canActivate: [authGuard],data: { roles: ['ADMINISTRADOR'] } },
+  { path: 'admin/medicamentos', component: AdminMedicamentosComponent, canActivate: [authGuard], data: { roles: ['ADMINISTRADOR'] } },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
 ];

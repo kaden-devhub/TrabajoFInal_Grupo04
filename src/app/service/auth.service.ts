@@ -34,7 +34,7 @@ function tokenVencido(token: string): boolean {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private http = inject(HttpClient);
-  private sesionState = signal<Sesion | null>(this.leerSesion);
+  private sesionState = signal<Sesion | null>(this.leerSesion());
   sesion = this.sesionState.asReadonly();
 
   login(rol: Rol, correo: string, contrasena: string): Observable<Sesion> {

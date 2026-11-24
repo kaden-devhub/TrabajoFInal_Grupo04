@@ -1,1 +1,236 @@
-<p>auth-component works!</p>
+<div class="auth-contenedor">
+  <section class="panel-lateral">
+    <div>
+      <h1>Tu salud, transparente y al alcance</h1>
+      <p>
+        Compara precios y disponibilidad de medicamentos entre farmacias y encuentra la mejor
+        opción cerca de ti.
+      </p>
+      <ul>
+        <li>Busca medicamentos por nombre</li>
+        <li>Compara precios y stock entre farmacias</li>
+        <li>Ubica la farmacia más cercana</li>
+      </ul>
+    </div>
+    <small>© 2026 ComparaSalud. Todos los derechos reservados.</small>
+  </section>
+
+  <section class="panel-formulario">
+    <mat-card class="auth-card">
+      @if (modo() === 'login') {
+        <!-- Login -->
+        <mat-card-title>Bienvenido de nuevo</mat-card-title>
+        <mat-card-content>
+          <p class="subtitulo">Ingresa a tu cuenta para continuar</p>
+
+          <div class="selector selector-3">
+            @for (r of roles; track r.valor) {
+              <button
+                type="button"
+                [class.activo]="rol() === r.valor"
+                (click)="elegirRol(r.valor)"
+              >
+                {{ r.texto }}
+              </button>
+            }
+          </div>
+
+          <form [formGroup]="loginForm" class="form-container" (ngSubmit)="iniciarSesion()">
+            <mat-form-field appearance="fill">
+              <mat-label>Correo electrónico</mat-label>
+              <input matInput type="email" formControlName="correo" placeholder="tu@email.com" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                [type]="mostrarClave() ? 'text' : 'password'"
+                formControlName="contrasena"
+                placeholder="Ingresa tu contraseña"
+              />
+              <button type="button" matSuffix class="ver-clave" (click)="alternarClave()">
+                {{ mostrarClave() ? 'Ocultar' : 'Ver' }}
+              </button>
+            </mat-form-field>
+
+            @if (errores().length) {
+              <ul class="errores">
+                @for (e of errores(); track $index) {
+                  <li>{{ e }}</li>
+                }
+              </ul>
+            }
+
+            <button type="submit" mat-raised-button color="primary" [disabled]="enviando()">
+              Iniciar sesión
+            </button>
+          </form>
+
+          <p class="cambio">
+            ¿No tienes una cuenta?
+            <a routerLink="/registro">Regístrate aquí</a>
+          </p>
+        </mat-card-content>
+      } @else {
+        <!-- Registro -->
+        <mat-card-title>Crear tu cuenta</mat-card-title>
+        <mat-card-content>
+          <p class="subtitulo">Elige el tipo de cuenta que necesitas</p>
+
+          <div class="selector selector-2">
+            @for (t of tipos; track t.valor) {
+              <button
+                type="button"
+                [class.activo]="tipo() === t.valor"
+                (click)="elegirTipo(t.valor)"
+              >
+                {{ t.texto }}
+              </button>
+            }
+          </div>
+
+          @if (tipo() === 'CLIENTE') {
+            <form [formGroup]="clienteForm" class="form-container" (ngSubmit)="registrarCliente()">
+              <div class="fila">
+                <mat-form-field appearance="fill">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput formControlName="nombre" placeholder="Ana" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Apellidos</mat-label>
+                  <input matInput formControlName="apellidos" placeholder="Pérez" />
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput type="email" formControlName="correo" placeholder="tu@email.com" />
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Contraseña (mínimo 6 caracteres)</mat-label>
+                <input
+                  matInput
+                  [type]="mostrarClave() ? 'text' : 'password'"
+                  formControlName="contrasena"
+                />
+                <button type="button" matSuffix class="ver-clave" (click)="alternarClave()">
+                  {{ mostrarClave() ? 'Ocultar' : 'Ver' }}
+                </button>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input
+                  matInput
+                  [type]="mostrarClave() ? 'text' : 'password'"
+                  formControlName="contrasena2"
+                />
+              </mat-form-field>
+
+              @if (errores().length) {
+                <ul class="errores">
+                  @for (e of errores(); track $index) {
+                    <li>{{ e }}</li>
+                  }
+                </ul>
+              }
+
+              <button type="submit" mat-raised-button color="primary" [disabled]="enviando()">
+                Crear cuenta
+              </button>
+            </form>
+          } @else {
+            <form
+              [formGroup]="farmaciaForm"
+              class="form-container"
+              (ngSubmit)="registrarFarmacia()"
+            >
+              <mat-form-field appearance="fill">
+                <mat-label>Nombre de la farmacia</mat-label>
+                <input matInput formControlName="nombre" placeholder="Farmacia Central" />
+              </mat-form-field>
+
+              <div class="fila">
+                <mat-form-field appearance="fill">
+                  <mat-label>Licencia</mat-label>
+                  <input matInput formControlName="licencia" placeholder="LIC-001" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Teléfono</mat-label>
+                  <input matInput formControlName="telefono" placeholder="999111222" />
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Dirección</mat-label>
+                <input matInput formControlName="direccion" placeholder="Av. Larco 123" />
+              </mat-form-field>
+
+              <div class="fila">
+                <mat-form-field appearance="fill">
+                  <mat-label>Distrito</mat-label>
+                  <input matInput formControlName="distrito" placeholder="Miraflores" />
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Horario</mat-label>
+                  <input matInput formControlName="horario" placeholder="Lun-Dom 8:00 - 22:00" />
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Correo electrónico</mat-label>
+                <input
+                  matInput
+                  type="email"
+                  formControlName="correo"
+                  placeholder="farmacia@email.com"
+                />
+              </mat-form-field>
+
+              <div class="fila">
+                <mat-form-field appearance="fill">
+                  <mat-label>Contraseña (mín. 6)</mat-label>
+                  <input
+                    matInput
+                    [type]="mostrarClave() ? 'text' : 'password'"
+                    formControlName="contrasena"
+                  />
+                  <button type="button" matSuffix class="ver-clave" (click)="alternarClave()">
+                    {{ mostrarClave() ? 'Ocultar' : 'Ver' }}
+                  </button>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Confirmar</mat-label>
+                  <input
+                    matInput
+                    [type]="mostrarClave() ? 'text' : 'password'"
+                    formControlName="contrasena2"
+                  />
+                </mat-form-field>
+              </div>
+
+              @if (errores().length) {
+                <ul class="errores">
+                  @for (e of errores(); track $index) {
+                    <li>{{ e }}</li>
+                  }
+                </ul>
+              }
+
+              <button type="submit" mat-raised-button color="primary" [disabled]="enviando()">
+                Registrar farmacia
+              </button>
+            </form>
+          }
+
+          <p class="cambio">
+            ¿Ya tienes una cuenta?
+            <a routerLink="/login">Inicia sesión aquí</a>
+          </p>
+        </mat-card-content>
+      }
+    </mat-card>
+  </section>
+</div>

@@ -1,7 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
+import { ClienteService } from '../../service/cliente-service';
+import { FarmaciaService } from '../../service/farmacia-service';
+import { Rol } from '../../model/sesion';
+import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  imports: [],
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatCardContent,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatButton,
+    RouterLink,
+  ],
   selector: 'app-auth-component',
   styleUrl: './auth-component.css',
   templateUrl: './auth-component.html',

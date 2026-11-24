@@ -1,4 +1,4 @@
-export type sesion = 'CLIENTE' | 'FARMACIA'| 'ADMINISTRADOR'
+export type Rol = 'CLIENTE' | 'FARMACIA'| 'ADMINISTRADOR'
 
 // Respuesta de los tres login del backend (SesionDTO)
 export class Sesion {

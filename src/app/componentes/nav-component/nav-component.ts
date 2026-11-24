@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
+import { Router, RouterLink } from '@angular/router';
+import { MatButton } from '@angular/material/button';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
-  imports: [],
+  imports: [MatToolbar, RouterLink, MatButton],
   selector: 'app-nav-component',
   styleUrl: './nav-component.css',
   templateUrl: './nav-component.html',
 })
-export class NavComponent {}
+export class NavComponent {
+  auth:AuthService =inject(AuthService)
+  router: Router = inject(Router)
+
+  cerrarSesion(){
+    this.auth.logout();
+    this.router.navigate(['login']);
+  }
+}

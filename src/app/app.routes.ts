@@ -13,6 +13,6 @@ export const routes: Routes = [
   { path: 'admin/categorias', component: AdminCategoriasComponent, data: { roles: ['ADMINISTRADOR'] } },
   { path: 'admin/farmacias', component: AdminFarmaciasComponent, data: { roles: ['ADMINISTRADOR'] } },
   { path: 'admin/clientes', component: AdminClientesComponent, data: { roles: ['ADMINISTRADOR'] } },
-  { path: 'admin/medicamentos', component: AdminMedicamentosComponent, data: { roles: ['ADMINISTRADOR'] } },
+    { path: 'admin/medicamentos', component: AdminMedicamentosComponent, data: { roles: ['ADMINISTRADOR'] } },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
 ];

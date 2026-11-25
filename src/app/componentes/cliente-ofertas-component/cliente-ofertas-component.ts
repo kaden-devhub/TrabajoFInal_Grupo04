@@ -1,14 +1,32 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { OfertaService } from '../../service/oferta-service';
 import { FarmaciaService } from '../../service/farmacia-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FarmaciaPublica } from '../../model/farmacia';
 import { Oferta } from '../../model/oferta';
 import { claseStock, mensajeError, textoStock } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormField, MatLabel } from '@angular/material/input';
+import { MatOption, MatSelect } from '@angular/material/select';
+import { MatButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [
+    MatIcon,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatButton,
+    MatCard,
+    MatCardContent,
+    DatePipe,
+    CurrencyPipe,
+  ],
   selector: 'app-cliente-ofertas-component',
   styleUrl: './cliente-ofertas-component.css',
   templateUrl: './cliente-ofertas-component.html',

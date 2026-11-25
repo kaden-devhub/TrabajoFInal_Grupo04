@@ -1,1 +1,58 @@
-<p>cliente-ofertas-component works!</p>
+<div class="pagina">
+  <h1><mat-icon class="titulo-icono">sell</mat-icon> Ofertas de las farmacias</h1>
+  <p class="subtitulo">Productos con stock, de la oferta más reciente a la más antigua.</p>
+
+  <form [formGroup]="form" class="filtros" (ngSubmit)="filtrar()">
+    <mat-form-field appearance="outline">
+      <mat-label>Farmacia</mat-label>
+      <mat-select formControlName="farmaciaId">
+        <mat-option value="">Todas las farmacias</mat-option>
+        @for (f of farmacias(); track f.id) {
+          <mat-option [value]="f.id">{{ f.nombre }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Distrito</mat-label>
+      <mat-select formControlName="distrito">
+        <mat-option value="">Todos los distritos</mat-option>
+        @for (d of distritos(); track d) {
+          <mat-option [value]="d">{{ d }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button type="submit" class="boton-filtrar">
+      <mat-icon>filter_alt</mat-icon> Filtrar
+    </button>
+  </form>
+
+  @if (ofertas(); as lista) {
+    @if (lista.length) {
+      <div class="rejilla">
+        @for (o of lista; track o.id) {
+          <mat-card class="tarjeta">
+            <mat-card-content class="fila">
+              <span class="icono verde"><mat-icon>medication_liquid</mat-icon></span>
+              <div class="titulos">
+                <p class="medicamento">{{ o.nombreMedicamento }}</p>
+                <p class="farmacia"><mat-icon>store</mat-icon> {{ o.nombreFarmacia }} · {{ o.distrito }}</p>
+                <p class="fecha"><mat-icon>schedule</mat-icon> {{ o.fechaActualizacion | date: 'dd MMM yyyy' }}</p>
+              </div>
+              <div class="derecha">
+                <b class="precio">{{ o.precio | currency: 'PEN' : 'S/ ' }}</b>
+                <span class="etiqueta" [class]="claseStock(o.stock)">{{ textoStock(o.stock) }}</span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    } @else {
+      <div class="vacio">
+        <mat-icon>filter_alt_off</mat-icon>
+        <p>No hay ofertas con esos filtros. Prueba quitando alguno.</p>
+      </div>
+    }
+  }
+</div>

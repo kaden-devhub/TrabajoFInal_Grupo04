@@ -18,7 +18,7 @@ export class MedicamentoService {
 
   //Buscar medicamento por nombre
 
-  searchMed(nombre: string): Observable<MedicamentoBusqueda[]> {
+  buscar(nombre: string): Observable<MedicamentoBusqueda[]> {
     return this.http.get<MedicamentoBusqueda[]>(`${this.url}/buscar`, { params: { nombre } });
   }
 
@@ -30,7 +30,7 @@ export class MedicamentoService {
 
   // Buscar recomendaciones por Medicamentos
 
-  searchRecomends(id: number): Observable<Recomendacion[]> {
+  recomendaciones(id: number): Observable<Recomendacion[]> {
     return this.http.get<Recomendacion[]>(`${this.url}/${id}/recomendaciones`);
   }
 
@@ -50,13 +50,13 @@ export class MedicamentoService {
 
   // Registrar Medicamentos
 
-  insert(datos: MedicamentoForm): Observable<Medicamento> {
+  registrar(datos: MedicamentoForm): Observable<Medicamento> {
     return this.http.post<Medicamento>(this.url, datos);
   }
 
   // Editar información de un medicamento
 
-  update(id: number, datos: MedicamentoForm): Observable<Medicamento> {
+  editar(id: number, datos: MedicamentoForm): Observable<Medicamento> {
     return this.http.put<Medicamento>(`${this.url}/${id}`, datos);
   }
 }

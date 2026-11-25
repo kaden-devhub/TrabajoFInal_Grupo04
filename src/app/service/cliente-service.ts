@@ -4,7 +4,7 @@ import { environment } from '../environments/enviroments';
 import { Cliente, ClientePublico } from '../model/cliente';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ClienteService {
   private http = inject(HttpClient);
   private url = environment.apiUrl;
@@ -20,12 +20,15 @@ export class ClienteService {
   }
 
   //Actualizar clientes
-  updateCliente(id: number, datos: { nombre: string; apellidos: string }): Observable<ClientePublico> {
+  updateCliente(
+    id: number,
+    datos: { nombre: string; apellidos: string },
+  ): Observable<ClientePublico> {
     return this.http.put<ClientePublico>(`${this.url}/${id}/nombre`, datos);
   }
 
   //Eliminar cliente por Id
-  delete(id:number): Observable<void> {
+  delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);
   }
 }

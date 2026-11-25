@@ -6,7 +6,7 @@ import { ClienteService } from '../../service/cliente-service';
 import { FarmaciaService } from '../../service/farmacia-service';
 import { Rol } from '../../model/sesion';
 import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatFormField, MatInput, MatLabel, MatSuffix } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 
 @Component({
@@ -20,6 +20,7 @@ import { MatButton } from '@angular/material/button';
     MatInput,
     MatButton,
     RouterLink,
+    MatSuffix
   ],
   selector: 'app-auth-component',
   styleUrl: './auth-component.css',

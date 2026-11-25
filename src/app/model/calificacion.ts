@@ -12,12 +12,6 @@ export interface Calificacion {
   fechaCreacion: string;
 }
 
-export interface CalificacionesFarmacia {
-  total: number;
-  promedio: number | null;
-  calificaciones: Calificacion[];
-}
-
 // GET /farmacias/{id}/calificaciones
 export interface CalificacionesFarmacia {
   total: number;

@@ -11,7 +11,7 @@ export class OfertaService {
 
   //Buscar ofertas de medicamentos SOLO CON STOCK
 
-  list(filtros: { farmaciaId?: string | number; distrito?: string } = {}): Observable<Oferta[]> {
+  listar(filtros: { farmaciaId?: string | number; distrito?: string } = {}): Observable<Oferta[]> {
     let params = new HttpParams();
     if (filtros.farmaciaId) params = params.set('farmaciaId', filtros.farmaciaId);
     if (filtros.distrito) params = params.set('distrito', filtros.distrito);
@@ -19,27 +19,27 @@ export class OfertaService {
   }
 
   //Buscar ofertas por farmacia, incluyendo las agotadas
-  listFarm(idFarmacia: number): Observable<Oferta[]> {
+  deFarmacia(idFarmacia: number): Observable<Oferta[]> {
     return this.http.get<Oferta[]>(`${environment.apiUrl}/farmacias/${idFarmacia}/ofertas`);
   }
 
   // Crear una oferta nueva
-  insert(oferta: NuevaOferta): Observable<Oferta> {
+  crear(oferta: NuevaOferta): Observable<Oferta> {
     return this.http.post<Oferta>(`${environment.apiUrl}/ofertas`, oferta);
   }
 
   // Actualizar Precio y Stock de las ofertas
-  update(id: number, cambio: CambioOferta): Observable<Oferta> {
+  editar(id: number, cambio: CambioOferta): Observable<Oferta> {
     return this.http.put<Oferta>(`${environment.apiUrl}/ofertas/${id}`, cambio);
   }
 
   // Actualizar el precio o el stock de las ofertas
-  updatePreciosStock(id: number, cambio: CambioOferta): Observable<Oferta> {
+  editarPrecioStock(id: number, cambio: CambioOferta): Observable<Oferta> {
     return this.http.put<Oferta>(`${environment.apiUrl}/ofertas/${id}/precio-stock`, cambio);
   }
 
   // Eliminar una oferta por Id
-  delete(id: number): Observable<void> {
+  eliminar(id: number): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/ofertas/${id}`);
   }
 }

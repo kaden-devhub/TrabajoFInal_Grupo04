@@ -7,12 +7,16 @@ import { AdminFarmaciasComponent } from './componentes/admin-farmacias-component
 import { AdminMedicamentosComponent } from './componentes/admin-medicamentos-component/admin-medicamentos-component';
 import { AuthComponent } from './componentes/auth-component/auth-component';
 import { authGuard } from './guards/auth-guard';
+import { ClienteBuscarComponent } from './componentes/cliente-buscar-component/cliente-buscar-component';
+import { ClienteOfertasComponent } from './componentes/cliente-ofertas-component/cliente-ofertas-component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: AuthComponent, data: { modo: 'login'}},
   { path: 'registro', component: AuthComponent, data: { modo: 'registro'}},
+  { path: 'cliente/buscar', component: ClienteBuscarComponent, canActivate: [authGuard], data: { roles: ['CLIENTE']}},
+  { path: 'cliente/ofertas', component: ClienteOfertasComponent, canActivate: [authGuard], data: { roles: ['CLIENTE']}},
   { path: 'admin/resumen', component: AdminResumenComponent, canActivate : [authGuard],data: { roles: ['ADMINISTRADOR'] } },
   { path: 'admin/categorias', component: AdminCategoriasComponent , canActivate : [authGuard], data: { roles: ['ADMINISTRADOR'] } },
   { path: 'admin/farmacias', component: AdminFarmaciasComponent, canActivate: [authGuard], data: { roles: ['ADMINISTRADOR'] } },

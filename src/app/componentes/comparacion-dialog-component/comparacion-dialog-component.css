@@ -1,0 +1,21 @@
+.bloque {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+.nombre {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+.gris {
+  color: #6b7280;
+  font-weight: 400;
+}
+.trofeo {
+  vertical-align: middle;
+  color: #059669;
+}
+.error {
+  color: #dc2626;
+}

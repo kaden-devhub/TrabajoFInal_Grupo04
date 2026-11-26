@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MedicamentoService } from '../../service/medicamento-service';
+import { Comparacion } from '../../model/medicamento';
+import { mensajeError } from '../../utils/utilidades';
 
 @Component({
   imports: [],
@@ -6,4 +10,17 @@ import { Component } from '@angular/core';
   styleUrl: './comparacion-dialog-component.css',
   templateUrl: './comparacion-dialog-component.html',
 })
-export class ComparacionDialogComponent {}
+export class ComparacionDialogComponent {
+  data = inject<{ ids: number[] }>(MAT_DIALOG_DATA);
+  medicamentoService: MedicamentoService = inject(MedicamentoService);
+
+  resultado = signal<Comparacion[] | null>(null);
+  error = signal('');
+
+  constructor() {
+    this.medicamentoService.comparar(this.data.ids).subscribe({
+      next: (r) => this.resultado.set(r),
+      error: (e) => this.error.set(mensajeError(e)),
+    });
+  }
+}

@@ -13,6 +13,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MedicamentoBusqueda } from '../../model/medicamento';
 import { claseStock, mensajeError, textoStock } from '../../utils/utilidades';
 import { CurrencyPipe } from '@angular/common';
+import {
+  MedicamentoDetalleDialogComponent
+} from '../medicamento-detalle-dialog-component/medicamento-detalle-dialog-component';
 
 @Component({
   imports: [

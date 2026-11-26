@@ -1,11 +1,22 @@
 import { Component, inject, signal } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { MedicamentoService } from '../../service/medicamento-service';
 import { Comparacion } from '../../model/medicamento';
 import { mensajeError } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { CurrencyPipe } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  imports: [],
+  imports: [
+    MatDialogTitle,
+    MatIcon,
+    MatDialogContent,
+    CurrencyPipe,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose,
+  ],
   selector: 'app-comparacion-dialog-component',
   styleUrl: './comparacion-dialog-component.css',
   templateUrl: './comparacion-dialog-component.html',

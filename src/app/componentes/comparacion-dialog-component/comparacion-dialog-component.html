@@ -1,1 +1,45 @@
-<p>comparacion-dialog-component works!</p>
+<h2 mat-dialog-title><mat-icon>balance</mat-icon> Comparación de medicamentos</h2>
+
+<mat-dialog-content>
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else if (!resultado()) {
+    <p>Cargando…</p>
+  } @else {
+    @for (m of resultado(); track m.id) {
+      <section class="bloque">
+        <p class="nombre">
+          {{ m.nombreComercial || m.nombre }} <span class="gris">· {{ m.nombre }}</span>
+        </p>
+        @if (m.ofertaMasBarata; as barata) {
+          <p>
+            <mat-icon class="trofeo">emoji_events</mat-icon> Más barata:
+            <b class="precio">{{ barata.precio | currency: 'PEN' : 'S/ ' }}</b> en
+            {{ barata.nombreFarmacia }} ({{ barata.distrito }})
+          </p>
+          <table class="tabla">
+            <thead>
+            <tr><th>Farmacia</th><th>Distrito</th><th>Precio</th><th>Stock</th></tr>
+            </thead>
+            <tbody>
+              @for (o of m.ofertas; track o.id) {
+                <tr>
+                  <td>{{ o.nombreFarmacia }}</td>
+                  <td>{{ o.distrito }}</td>
+                  <td>{{ o.precio | currency: 'PEN' : 'S/ ' }}</td>
+                  <td>{{ o.stock }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        } @else {
+          <p class="gris">Sin ofertas</p>
+        }
+      </section>
+    }
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

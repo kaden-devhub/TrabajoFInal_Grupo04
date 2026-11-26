@@ -1,1 +1,73 @@
-<p>medicamento-detalle-dialog-component works!</p>
+@if (error()) {
+  <h2 mat-dialog-title>Detalle del medicamento</h2>
+  <mat-dialog-content><p class="error">{{ error() }}</p></mat-dialog-content>
+} @else if (!medicamento() || !reporte()) {
+  <h2 mat-dialog-title>Detalle del medicamento</h2>
+  <mat-dialog-content><p>Cargando…</p></mat-dialog-content>
+} @else {
+  @let m = medicamento()!;
+  @let r = reporte()!;
+
+  <h2 mat-dialog-title>{{ m.nombreComercial || m.nombre }}</h2>
+
+  <mat-dialog-content>
+    <p class="gris">
+      {{ resumen(m) }}
+    </p>
+    <span class="etiqueta">{{ m.nombreCategoria || 'Sin categoría' }}</span>
+
+    <div class="datos">
+      @for (d of datos(m); track d.etiqueta) {
+        <p><span class="gris">{{ d.etiqueta }}:</span> {{ d.valor }}</p>
+      }
+    </div>
+
+    <h3><mat-icon>bar_chart</mat-icon> Reporte de precios</h3>
+    <div class="resumen">
+      <div><b>{{ r.totalOfertas }}</b><span>Ofertas</span></div>
+      <div><b>{{ r.precioMinimo | currency: 'PEN' : 'S/ ' }}</b><span>Mínimo</span></div>
+      <div><b>{{ r.precioMaximo | currency: 'PEN' : 'S/ ' }}</b><span>Máximo</span></div>
+      <div><b>{{ r.precioPromedio | currency: 'PEN' : 'S/ ' }}</b><span>Promedio</span></div>
+    </div>
+
+    @if (r.ofertas.length) {
+      <table class="tabla">
+        <thead>
+        <tr><th>Farmacia</th><th>Distrito</th><th>Precio</th><th>Stock</th></tr>
+        </thead>
+        <tbody>
+          @for (o of r.ofertas; track o.id) {
+            <tr>
+              <td>{{ o.nombreFarmacia }}</td>
+              <td>{{ o.distrito }}</td>
+              <td>{{ o.precio | currency: 'PEN' : 'S/ ' }}</td>
+              <td>{{ o.stock }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p class="gris">Aún no hay ofertas de este medicamento</p>
+    }
+
+    <h3><mat-icon>lightbulb</mat-icon> Alternativas recomendadas</h3>
+    @if (recomendaciones().length) {
+      <table class="tabla">
+        <tbody>
+          @for (x of recomendaciones(); track x.id) {
+            <tr>
+              <td>{{ x.nombreComercial || x.nombre }} <span class="gris">· {{ x.nombre }}</span></td>
+              <td class="precio">desde {{ x.precioMinimo | currency: 'PEN' : 'S/ ' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <p class="gris">No hay alternativas con stock.</p>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+  </mat-dialog-actions>
+}

@@ -1,13 +1,24 @@
 import { Component, inject, signal } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { MedicamentoService } from '../../service/medicamento-service';
 import { Medicamento, Recomendacion, ReportePrecios } from '../../model/medicamento';
 import { forkJoin } from 'rxjs';
 import { mensajeError } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { CurrencyPipe } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 // Detalle (GET /medicamentos/{id}) + reporte de precios + alternativas recomendadas
 @Component({
-  imports: [],
+  imports: [
+    MatDialogTitle,
+    MatDialogContent,
+    MatIcon,
+    CurrencyPipe,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose,
+  ],
   selector: 'app-medicamento-detalle-dialog-component',
   styleUrl: './medicamento-detalle-dialog-component.css',
   templateUrl: './medicamento-detalle-dialog-component.html',

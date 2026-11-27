@@ -1,1 +1,79 @@
-<p>cliente-favoritos-component works!</p>
+<div class="pagina">
+  <h1><mat-icon class="titulo-icono">favorite</mat-icon> Mis favoritos</h1>
+  <p class="subtitulo">Tus medicamentos y farmacias guardados, a un clic.</p>
+
+  <div class="columnas">
+    <!-- Medicamentos -->
+    <mat-card class="tarjeta">
+      <mat-card-content>
+        <h2>
+          <span class="icono"><mat-icon>medication</mat-icon></span>
+          Medicamentos
+          <span class="contador">{{ medicamentos().length }}</span>
+        </h2>
+
+        @if (medicamentos().length) {
+          <ul class="lista">
+            @for (m of medicamentos(); track m.id) {
+              <li>
+                <span class="icono"><mat-icon>medication</mat-icon></span>
+                <div class="titulos">
+                  <p class="principal">{{ m.nombreComercial || m.nombre }}</p>
+                  <p class="secundario">
+                    {{ m.nombre }}
+                    @if (m.precioDesde !== null) {
+                      · desde {{ m.precioDesde | currency: 'PEN' : 'S/ ' }}
+                    }
+                  </p>
+                </div>
+                <button mat-icon-button type="button" title="Quitar de favoritos" class="quitar" (click)="quitarMedicamento(m.id)">
+                  <mat-icon>heart_broken</mat-icon>
+                </button>
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="vacio">
+            <mat-icon>favorite</mat-icon>
+            <p>Aún no tienes medicamentos favoritos. Toca el corazón en cualquier resultado para guardarlo.</p>
+            <a mat-stroked-button routerLink="/cliente/buscar"><mat-icon>search</mat-icon> Buscar medicamentos</a>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Farmacias -->
+    <mat-card class="tarjeta">
+      <mat-card-content>
+        <h2>
+          <span class="icono verde"><mat-icon>store</mat-icon></span>
+          Farmacias
+          <span class="contador">{{ farmacias().length }}</span>
+        </h2>
+
+        @if (farmacias().length) {
+          <ul class="lista">
+            @for (f of farmacias(); track f.id) {
+              <li>
+                <span class="icono verde"><mat-icon>store</mat-icon></span>
+                <div class="titulos">
+                  <p class="principal">{{ f.nombre }}</p>
+                  <p class="secundario">{{ f.direccion }}, {{ f.distrito }}</p>
+                </div>
+                <button mat-icon-button type="button" title="Quitar de favoritos" class="quitar" (click)="quitarFarmacia(f.id)">
+                  <mat-icon>heart_broken</mat-icon>
+                </button>
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="vacio">
+            <mat-icon>favorite</mat-icon>
+            <p>Aún no tienes farmacias favoritas. Guarda las que te queden más cerca.</p>
+            <a mat-stroked-button routerLink="/cliente/farmacias"><mat-icon>store</mat-icon> Ver farmacias</a>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

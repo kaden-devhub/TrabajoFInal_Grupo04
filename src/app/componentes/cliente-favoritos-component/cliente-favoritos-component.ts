@@ -4,9 +4,14 @@ import { FavoritoService } from '../../services/favorito-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FarmaciaFavorita, MedicamentoFavorito } from '../../model/favorito';
 import { mensajeError } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { CurrencyPipe } from '@angular/common';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [MatIcon, MatCard, MatCardContent, CurrencyPipe, MatIconButton, MatButton, RouterLink],
   selector: 'app-cliente-favoritos-component',
   styleUrl: './cliente-favoritos-component.css',
   templateUrl: './cliente-favoritos-component.html',
@@ -59,7 +64,7 @@ export class ClienteFavoritosComponent {
       error: (e) => this.avisar(mensajeError(e)),
     });
   }
-  
+
   private avisar(mensaje: string) {
     this.snack.open(mensaje, 'OK', { duration: 3000 });
   }

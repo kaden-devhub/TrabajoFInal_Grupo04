@@ -1,0 +1,192 @@
+.tarjeta {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--cs-degradado);
+  color: white;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.avatar mat-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+}
+.datos {
+  flex: 1;
+  min-width: 0;
+}
+.datos h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.datos p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.datos mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+.derecha {
+  text-align: right;
+  font-size: 14px;
+}
+.derecha p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  margin: 0 0 4px;
+  opacity: 0.9;
+}
+.derecha .estrella {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: #fde047;
+}
+.estado {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+.columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.calificaciones {
+  margin-top: 24px;
+}
+mat-card-content {
+  padding: 24px;
+}
+h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+h3 .azul {
+  color: var(--cs-azul);
+}
+h3 .verde {
+  color: var(--cs-verde);
+}
+.ayuda {
+  margin: -8px 0 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+form button {
+  align-self: flex-start;
+}
+.promedio {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+}
+.promedio b {
+  margin-left: 6px;
+  color: #111827;
+}
+.pequena {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+.pequena:not(.relleno) {
+  color: #d1d5db;
+}
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.lista li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.lista li:last-child {
+  border-bottom: 0;
+}
+.lista p {
+  margin: 2px 0;
+}
+.avatar-chico {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cs-degradado);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.estrellas-chicas {
+  margin: 0 6px;
+  white-space: nowrap;
+}
+.fecha {
+  font-size: 12px;
+  color: #9ca3af;
+}
+.gris {
+  color: #6b7280;
+}
+.vacio {
+  padding: 16px 8px;
+}
+.vacio p {
+  max-width: 300px;
+  margin: 8px auto 0;
+  font-size: 14px;
+}
+.cargando {
+  text-align: center;
+  color: #6b7280;
+}
+@media (max-width: 800px) {
+  .columnas {
+    grid-template-columns: 1fr;
+  }
+}

@@ -12,6 +12,7 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
+import { FarmaciaDetalleDialogComponent } from '../farmacia-detalle-dialog-component/farmacia-detalle-dialog-component';
 
 @Component({
   imports: [

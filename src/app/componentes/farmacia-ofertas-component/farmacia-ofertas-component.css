@@ -1,0 +1,140 @@
+.encabezado {
+  margin-bottom: 24px;
+  border-radius: 24px;
+  border-color: #dbeafe;
+}
+.encabezado mat-card-content {
+  padding: 28px;
+}
+.arriba {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.saludo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cs-azul);
+}
+.arriba h1 {
+  margin: 4px 0;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  letter-spacing: -0.01em;
+}
+.arriba .subtitulo {
+  margin: 0;
+}
+.boton-nueva {
+  height: 48px;
+  padding: 0 24px;
+}
+.estadisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--cs-borde);
+  border-radius: 16px;
+  background: #fff;
+}
+.stat .icono {
+  width: 40px;
+  height: 40px;
+}
+.stat b {
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+}
+.stat small {
+  display: block;
+  margin-top: 4px;
+  color: #6b7280;
+}
+.icono.gris {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+.icono.amarillo {
+  background: #fffbeb;
+  color: #fbbf24;
+}
+.rejilla {
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+.tarjeta.agotada {
+  opacity: 0.8;
+}
+.tarjeta mat-card-content {
+  padding: 16px;
+}
+.cabecera {
+  align-items: center;
+}
+.cabecera h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fecha {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px !important;
+  color: #9ca3af !important;
+}
+.fecha mat-icon {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+}
+.precio.grande {
+  flex-shrink: 0;
+  font-size: 20px;
+}
+.pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+}
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.editar {
+  --mat-button-text-label-text-color: #2563eb;
+  --mat-button-text-state-layer-color: #2563eb;
+}
+.borrar {
+  color: #9ca3af;
+}
+.borrar:hover {
+  color: #dc2626;
+}
+.vacio a {
+  margin-top: 8px;
+}
+@media (max-width: 700px) {
+  .estadisticas,
+  .rejilla {
+    grid-template-columns: 1fr;
+  }
+}

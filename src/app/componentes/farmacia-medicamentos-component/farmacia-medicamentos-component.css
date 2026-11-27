@@ -1,0 +1,60 @@
+.titulo-icono {
+  color: var(--cs-azul);
+}
+.buscador {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.campo {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+}
+.boton-buscar {
+  height: 56px;
+  padding: 0 32px;
+}
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+.titulos {
+  flex: 1;
+  min-width: 10rem;
+}
+.titulos p {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+.titulos .etiqueta {
+  margin-left: 4px;
+}
+.pildora {
+  --mat-button-filled-container-shape: 999px;
+}
+.editar-med {
+  color: #6b7280;
+}
+.editar-med:hover {
+  color: #2563eb;
+}
+@media (max-width: 600px) {
+  .buscador {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .boton-buscar {
+    height: 48px;
+  }
+}

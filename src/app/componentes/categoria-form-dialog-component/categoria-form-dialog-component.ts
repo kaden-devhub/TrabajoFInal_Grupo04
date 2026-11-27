@@ -1,13 +1,28 @@
 import { Component, inject, signal } from '@angular/core';
 import { Categoria } from '../../model/categoria';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { CategoriaService } from '../../services/categoria-service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { mensajeError } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
 @Component({
-  imports: [],
+  imports: [
+    MatIcon,
+    MatDialogTitle,
+    MatIconButton,
+    MatDialogClose,
+    MatDialogContent,
+    MatLabel,
+    MatFormField,
+    ReactiveFormsModule,
+    MatDialogActions,
+    MatInput,
+    MatButton,
+  ],
   selector: 'app-categoria-form-dialog-component',
   styleUrl: './categoria-form-dialog-component.css',
   templateUrl: './categoria-form-dialog-component.html',

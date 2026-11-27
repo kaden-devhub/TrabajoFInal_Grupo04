@@ -1,1 +1,30 @@
-<p>categoria-form-dialog-component works!</p>
+<div class="dialogo-cab">
+  <span class="icono"><mat-icon>{{ esEdicion ? 'edit' : 'add_circle' }}</mat-icon></span>
+  <div class="titulos">
+    <h2 mat-dialog-title>{{ esEdicion ? 'Editar categoría' : 'Nueva categoría' }}</h2>
+    <p>{{ esEdicion ? 'Actualiza el nombre o la descripción.' : 'Sirve para clasificar medicamentos.' }}</p>
+  </div>
+  <button mat-icon-button type="button" mat-dialog-close aria-label="Cerrar"><mat-icon>close</mat-icon></button>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="completo">
+      <mat-label>Nombre</mat-label>
+      <mat-icon matPrefix>label</mat-icon>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="completo">
+      <mat-label>Descripción (opcional)</mat-label>
+      <mat-icon matPrefix>notes</mat-icon>
+      <input matInput formControlName="descripcion" />
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close>Cancelar</button>
+    <button mat-flat-button type="submit" class="degradado" [disabled]="guardando()">
+      <mat-icon>save</mat-icon> Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

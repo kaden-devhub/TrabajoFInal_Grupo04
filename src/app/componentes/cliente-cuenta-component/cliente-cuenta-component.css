@@ -1,0 +1,79 @@
+.estrecha {
+  max-width: 640px;
+}
+.tarjeta {
+  overflow: hidden;
+  border-radius: 16px;
+}
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--cs-degradado);
+  color: white;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 26px;
+  font-weight: 700;
+}
+.datos h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.datos p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.datos mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+mat-card-content {
+  padding: 24px;
+}
+h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.avanzadas {
+  margin-top: 24px;
+  border-radius: 16px;
+}
+.avanzadas mat-icon {
+  margin-right: 8px;
+}
+.peligro {
+  margin-bottom: 4px;
+  color: #dc2626;
+}
+.boton-peligro {
+  color: #dc2626;
+}
+.cargando {
+  text-align: center;
+  color: #6b7280;
+}
+@media (max-width: 600px) {
+  .campos {
+    grid-template-columns: 1fr;
+  }
+}

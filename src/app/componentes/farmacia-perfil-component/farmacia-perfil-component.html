@@ -1,1 +1,127 @@
-<p>farmacia-perfil-component works!</p>
+<div class="pagina aparece">
+  @if (farmacia(); as f) {
+    @let c = calificaciones();
+
+    <mat-card class="cs-card tarjeta">
+      <div class="banner">
+        <span class="avatar"><mat-icon>storefront</mat-icon></span>
+        <div class="datos">
+          <h2>{{ f.nombre }}</h2>
+          <p><mat-icon>location_on</mat-icon> {{ f.direccion }}, {{ f.distrito }}</p>
+        </div>
+        <div class="derecha">
+          @if (c?.total) {
+            <p>{{ c?.promedio }} <mat-icon class="estrella relleno">star</mat-icon> ({{ c?.total }})</p>
+          } @else {
+            <p>Sin calificaciones</p>
+          }
+          <span class="estado">{{ f.estado }}</span>
+        </div>
+      </div>
+    </mat-card>
+
+    <div class="columnas">
+      <mat-card class="cs-card">
+        <mat-card-content>
+          <h3><mat-icon class="azul">badge</mat-icon> Datos de la farmacia</h3>
+          <form [formGroup]="formDatos" (ngSubmit)="guardarDatos()">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre</mat-label>
+              <mat-icon matPrefix>store</mat-icon>
+              <input matInput formControlName="nombre" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Licencia</mat-label>
+              <mat-icon matPrefix>verified</mat-icon>
+              <input matInput formControlName="licencia" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Dirección</mat-label>
+              <mat-icon matPrefix>location_on</mat-icon>
+              <input matInput formControlName="direccion" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Distrito</mat-label>
+              <mat-icon matPrefix>pin_drop</mat-icon>
+              <input matInput formControlName="distrito" />
+            </mat-form-field>
+            <button mat-flat-button type="submit" class="degradado" [disabled]="guardandoDatos()">
+              <mat-icon>save</mat-icon> Guardar datos
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="cs-card">
+        <mat-card-content>
+          <h3><mat-icon class="verde">call</mat-icon> Perfil comercial</h3>
+          <p class="ayuda">Así te contactan y saben cuándo estás abierta.</p>
+          <form [formGroup]="formPerfil" (ngSubmit)="guardarPerfil()">
+            <mat-form-field appearance="outline">
+              <mat-label>Teléfono (7 a 9 dígitos)</mat-label>
+              <mat-icon matPrefix>call</mat-icon>
+              <input matInput formControlName="telefono" />
+              @if (formPerfil.controls.telefono.hasError('pattern')) {
+                <mat-error>Usa solo números, entre 7 y 9 dígitos</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Horario</mat-label>
+              <mat-icon matPrefix>schedule</mat-icon>
+              <input matInput formControlName="horario" />
+            </mat-form-field>
+            <button mat-flat-button type="submit" class="degradado" [disabled]="guardandoPerfil()">
+              <mat-icon>save</mat-icon> Guardar perfil
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card class="cs-card calificaciones">
+      <mat-card-content>
+        <h3>
+          <mat-icon class="estrella relleno">star</mat-icon> Calificaciones recibidas
+          @if (c?.total) {
+            <span class="promedio">
+              @for (n of estrellas; track n) {
+                <mat-icon class="estrella pequena" [class.relleno]="n <= (c?.promedio ?? 0)">star</mat-icon>
+              }
+              <b>{{ c?.promedio }}</b> ({{ c?.total }})
+            </span>
+          }
+        </h3>
+        @if (c?.total) {
+          <ul class="lista">
+            @for (x of c!.calificaciones; track $index) {
+              <li>
+                <span class="avatar-chico">{{ inicial(x.nombreCliente) }}</span>
+                <div class="opinion">
+                  <p>
+                    <b>{{ x.nombreCliente }}</b>
+                    <span class="estrellas-chicas">
+                      @for (n of estrellas; track n) {
+                        <mat-icon class="estrella pequena" [class.relleno]="n <= x.puntuacion">star</mat-icon>
+                      }
+                    </span>
+                    <span class="fecha">{{ x.fechaCreacion | date: 'dd MMM yyyy' }}</span>
+                  </p>
+                  @if (x.comentario) {
+                    <p class="gris">{{ x.comentario }}</p>
+                  }
+                </div>
+              </li>
+            }
+          </ul>
+        } @else {
+          <div class="vacio">
+            <mat-icon>star</mat-icon>
+            <p>Aún no tienes calificaciones. Llegarán cuando tus clientes opinen.</p>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <p class="cargando">Cargando los datos de tu farmacia…</p>
+  }
+</div>

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { FarmaciaService } from '../../services/farmacia-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,9 +7,25 @@ import { ESTRELLAS, mensajeError } from '../../utils/utilidades';
 import { FarmaciaPublica } from '../../model/farmacia';
 import { CalificacionesFarmacia } from '../../model/calificacion';
 import { forkJoin } from 'rxjs';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatError, MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [
+    MatCard,
+    MatIcon,
+    MatCardContent,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatButton,
+    MatError,
+    DatePipe,
+  ],
   selector: 'app-farmacia-perfil-component',
   styleUrl: './farmacia-perfil-component.css',
   templateUrl: './farmacia-perfil-component.html',

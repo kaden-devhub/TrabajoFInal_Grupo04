@@ -1,1 +1,79 @@
-<p>farmacia-detalle-dialog-component works!</p>
+@if (error()) {
+  <h2 mat-dialog-title>Farmacia</h2>
+  <mat-dialog-content><p class="error">{{ error() }}</p></mat-dialog-content>
+} @else if (!farmacia() || !ubicacion() || !calificaciones()) {
+  <h2 mat-dialog-title>Farmacia</h2>
+  <mat-dialog-content><p>Cargando…</p></mat-dialog-content>
+} @else {
+  @let f = farmacia()!;
+  @let u = ubicacion()!;
+  @let c = calificaciones()!;
+
+  <h2 mat-dialog-title>{{ f.nombre }}</h2>
+
+  <mat-dialog-content>
+    <p class="gris">Licencia {{ f.licencia }} · {{ f.estado }}</p>
+
+    <p class="dato"><mat-icon>location_on</mat-icon> {{ u.direccion }}, {{ u.distrito }}</p>
+    <p class="dato"><mat-icon>schedule</mat-icon> {{ f.horario }}</p>
+    <p class="dato"><mat-icon>call</mat-icon> {{ f.telefono }}</p>
+    <a mat-stroked-button [href]="urlMapa(u)" target="_blank" rel="noopener">
+      <mat-icon>directions</mat-icon> Cómo llegar
+    </a>
+
+    <h3>
+      Calificaciones
+      @if (c.total) {
+        <span class="promedio">
+          @for (n of estrellas; track n) {
+            <mat-icon class="estrella" [class.relleno]="n <= (c.promedio ?? 0)">star</mat-icon>
+          }
+          {{ c.promedio }} ({{ c.total }})
+        </span>
+      }
+    </h3>
+
+    @if (c.total) {
+      <ul class="lista">
+        @for (x of c.calificaciones; track $index) {
+          <li>
+            <p>
+              <b>{{ x.nombreCliente }}</b>
+              @for (n of estrellas; track n) {
+                <mat-icon class="estrella pequena" [class.relleno]="n <= x.puntuacion">star</mat-icon>
+              }
+              <span class="gris">{{ x.fechaCreacion | date: 'dd MMM yyyy' }}</span>
+            </p>
+            @if (x.comentario) {
+              <p class="gris">{{ x.comentario }}</p>
+            }
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="gris">Aún no tiene calificaciones. ¡Sé la primera persona en opinar!</p>
+    }
+
+    <h3>Cuéntanos tu experiencia</h3>
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+      <div class="selector-estrellas">
+        @for (n of estrellas; track n) {
+          <button mat-icon-button type="button" [attr.aria-label]="n + ' estrella(s)'" (click)="elegirPuntuacion(n)">
+            <mat-icon class="estrella" [class.relleno]="n <= puntuacion()">star</mat-icon>
+          </button>
+        }
+      </div>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Comentario (opcional)</mat-label>
+        <input matInput formControlName="comentario" />
+      </mat-form-field>
+      <button mat-flat-button type="submit" [disabled]="enviando()">
+        <mat-icon>send</mat-icon> Enviar calificación
+      </button>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+  </mat-dialog-actions>
+}

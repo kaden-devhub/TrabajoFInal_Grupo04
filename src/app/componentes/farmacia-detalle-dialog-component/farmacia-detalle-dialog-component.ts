@@ -1,16 +1,33 @@
 import { Component, inject, signal } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { FarmaciaService } from '../../services/farmacia-service';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ESTRELLAS, mensajeError } from '../../utils/utilidades';
 import { FarmaciaPublica } from '../../model/farmacia';
 import { CalificacionesFarmacia, Ubicacion } from '../../model/calificacion';
 import { forkJoin } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { DatePipe } from '@angular/common';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
 @Component({
-  imports: [],
+  imports: [
+    MatDialogTitle,
+    MatDialogContent,
+    MatIcon,
+    MatButton,
+    DatePipe,
+    ReactiveFormsModule,
+    MatIconButton,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatDialogActions,
+    MatDialogClose,
+  ],
   selector: 'app-farmacia-detalle-dialog-component',
   styleUrl: './farmacia-detalle-dialog-component.css',
   templateUrl: './farmacia-detalle-dialog-component.html',

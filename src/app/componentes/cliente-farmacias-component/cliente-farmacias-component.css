@@ -1,0 +1,46 @@
+.titulo-icono {
+  vertical-align: middle;
+  color: var(--cs-azul);
+}
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+.boton-buscar {
+  height: 56px;
+  padding: 0 28px;
+  --mat-button-filled-container-color: #2563eb;
+}
+.tarjeta {
+  border-radius: 16px;
+}
+.tarjeta mat-card-content {
+  padding-top: 16px;
+}
+.datos {
+  margin: 16px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+.datos p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+.datos mat-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  color: #9ca3af;
+}
+.ver {
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .filtros {
+    grid-template-columns: 1fr;
+  }
+}

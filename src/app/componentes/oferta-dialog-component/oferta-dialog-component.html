@@ -1,1 +1,37 @@
-<p>oferta-dialog-component works!</p>
+<div class="dialogo-cab">
+  <span class="icono" [class.verde]="esNueva"><mat-icon>{{ esNueva ? 'sell' : 'edit' }}</mat-icon></span>
+  <div class="titulos">
+    <h2 mat-dialog-title>{{ esNueva ? 'Nueva oferta' : 'Editar oferta' }}</h2>
+    <p>{{ data.nombre }}</p>
+  </div>
+  <button mat-icon-button type="button" mat-dialog-close aria-label="Cerrar"><mat-icon>close</mat-icon></button>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <mat-dialog-content>
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label>Precio (S/)</mat-label>
+        <mat-icon matPrefix>payments</mat-icon>
+        <input matInput type="number" step="0.01" min="0" formControlName="precio" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ esNueva ? 'Stock (mayor que 0)' : 'Stock (0 = agotado)' }}</mat-label>
+        <mat-icon matPrefix>inventory_2</mat-icon>
+        <input matInput type="number" min="0" formControlName="stock" />
+      </mat-form-field>
+    </div>
+
+    @if (!esNueva) {
+      <p class="ayuda"><mat-icon>info</mat-icon> Deja un campo vacío para modificar solo el otro.</p>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close>Cancelar</button>
+    <button mat-flat-button type="submit" class="degradado" [disabled]="guardando()">
+      <mat-icon>{{ esNueva ? 'sell' : 'save' }}</mat-icon>
+      {{ esNueva ? 'Publicar oferta' : 'Guardar' }}
+    </button>
+  </mat-dialog-actions>
+</form>

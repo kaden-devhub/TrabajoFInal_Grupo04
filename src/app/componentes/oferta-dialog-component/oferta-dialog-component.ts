@@ -1,11 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { OfertaService } from '../../services/oferta-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { mensajeError } from '../../utils/utilidades';
 import { CambioOferta } from '../../model/oferta';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
 export interface OfertaDialogData {
   modo: 'crear' | 'editar';
@@ -16,7 +19,19 @@ export interface OfertaDialogData {
   stock?: number;
 }
 @Component({
-  imports: [],
+  imports: [
+    MatIcon,
+    MatDialogTitle,
+    MatIconButton,
+    MatDialogClose,
+    ReactiveFormsModule,
+    MatDialogContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatDialogActions,
+    MatButton,
+  ],
   selector: 'app-oferta-dialog-component',
   styleUrl: './oferta-dialog-component.css',
   templateUrl: './oferta-dialog-component.html',

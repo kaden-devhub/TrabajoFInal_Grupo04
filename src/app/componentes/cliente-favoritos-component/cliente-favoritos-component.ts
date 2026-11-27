@@ -7,11 +7,11 @@ import { mensajeError } from '../../utils/utilidades';
 import { MatIcon } from '@angular/material/icon';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { CurrencyPipe } from '@angular/common';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatAnchor, MatButton, MatIconButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [MatIcon, MatCard, MatCardContent, CurrencyPipe, MatIconButton, MatButton, RouterLink],
+  imports: [MatIcon, MatCard, MatCardContent, CurrencyPipe, MatIconButton, MatButton, RouterLink, MatAnchor],
   selector: 'app-cliente-favoritos-component',
   styleUrl: './cliente-favoritos-component.css',
   templateUrl: './cliente-favoritos-component.html',

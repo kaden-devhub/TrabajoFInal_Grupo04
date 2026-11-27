@@ -9,7 +9,7 @@ import { FarmaciaPublica } from '../../model/farmacia';
 import { CalificacionesFarmacia, Ubicacion } from '../../model/calificacion';
 import { forkJoin } from 'rxjs';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatAnchor, MatButton, MatIconButton } from '@angular/material/button';
 import { DatePipe } from '@angular/common';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
@@ -27,6 +27,7 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
     MatInput,
     MatDialogActions,
     MatDialogClose,
+    MatAnchor
   ],
   selector: 'app-farmacia-detalle-dialog-component',
   styleUrl: './farmacia-detalle-dialog-component.css',

@@ -8,7 +8,7 @@ import { ClientePublico } from '../../model/cliente';
 import { mensajeError } from '../../utils/utilidades';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
-import { MatFormField, MatLabel } from '@angular/material/input';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 
@@ -24,6 +24,7 @@ import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } fr
     MatExpansionPanel,
     MatExpansionPanelHeader,
     MatExpansionPanelTitle,
+    MatInput,
   ],
   selector: 'app-cliente-cuenta-component',
   styleUrl: './cliente-cuenta-component.css',

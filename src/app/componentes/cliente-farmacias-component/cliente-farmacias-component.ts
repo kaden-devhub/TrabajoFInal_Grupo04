@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FarmaciaPublica } from '../../model/farmacia';
 import { mensajeError } from '../../utils/utilidades';
 import { MatIcon } from '@angular/material/icon';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatFormField, MatInput, MatLabel, MatPrefix } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -27,6 +27,7 @@ import { FarmaciaDetalleDialogComponent } from '../farmacia-detalle-dialog-compo
     MatCardContent,
     MatIconButton,
     MatInput,
+    MatPrefix
   ],
   selector: 'app-cliente-farmacias-component',
   styleUrl: './cliente-farmacias-component.css',

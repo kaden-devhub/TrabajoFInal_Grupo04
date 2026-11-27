@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router, RouterLink } from '@angular/router';
 import { MatAnchor, MatButton } from '@angular/material/button';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   imports: [MatToolbar, RouterLink, MatButton, MatAnchor],
@@ -16,6 +16,6 @@ export class NavComponent {
 
   cerrarSesion(){
     this.auth.logout();
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
   }
 }

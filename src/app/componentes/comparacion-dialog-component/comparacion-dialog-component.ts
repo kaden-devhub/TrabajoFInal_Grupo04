@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
-import { MedicamentoService } from '../../service/medicamento-service';
+import { MedicamentoService } from '../../services/medicamento-service';
 import { Comparacion } from '../../model/medicamento';
 import { mensajeError } from '../../utils/utilidades';
 import { MatIcon } from '@angular/material/icon';

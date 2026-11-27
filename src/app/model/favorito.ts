@@ -1,4 +1,4 @@
-export class MedicamentoFavorito {
+export interface MedicamentoFavorito {
   id: number;
   nombre: string;
   nombreComercial?: string;

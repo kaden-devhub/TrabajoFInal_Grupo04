@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
-import { MedicamentoService } from '../../service/medicamento-service';
+import { MedicamentoService } from '../../services/medicamento-service';
 import { Medicamento, Recomendacion, ReportePrecios } from '../../model/medicamento';
 import { forkJoin } from 'rxjs';
 import { mensajeError } from '../../utils/utilidades';

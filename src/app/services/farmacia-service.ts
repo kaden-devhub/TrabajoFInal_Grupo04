@@ -1,6 +1,6 @@
 import { inject, Injectable, Service } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/enviroment';
 import { DatosFarmacia, Farmacia, FarmaciaPublica, PerfilComercial } from '../model/farmacia';
 import { Observable } from 'rxjs';
 import { CalificacionesFarmacia, NuevaCalificacion, Ubicacion } from '../model/calificacion';
@@ -8,7 +8,7 @@ import { CalificacionesFarmacia, NuevaCalificacion, Ubicacion } from '../model/c
 @Injectable({ providedIn: 'root' })
 export class FarmaciaService {
   private http = inject(HttpClient);
-  private url = environment.apiUrl;
+  private url = `${environment.apiUrl}/farmacias`;
 
   //Registrar una Farmacia
   insert(farmacia: Farmacia): Observable<Farmacia> {
@@ -27,7 +27,7 @@ export class FarmaciaService {
   }
 
   // Buscar una farmacia especifica
-  getbyId(id: number): Observable<FarmaciaPublica> {
+  getById(id: number): Observable<FarmaciaPublica> {
     return this.http.get<FarmaciaPublica>(`${this.url}/${id}`);
   }
 

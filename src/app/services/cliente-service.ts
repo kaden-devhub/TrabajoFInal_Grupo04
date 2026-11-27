@@ -1,13 +1,13 @@
 import { inject, Injectable, Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/enviroment';
 import { Cliente, ClientePublico } from '../model/cliente';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ClienteService {
   private http = inject(HttpClient);
-  private url = environment.apiUrl;
+  private url = `${environment.apiUrl}/clientes`;
 
   //Registro del cliente
   insert(cliente: Cliente): Observable<Cliente> {
@@ -20,7 +20,7 @@ export class ClienteService {
   }
 
   //Actualizar clientes
-  updateCliente(
+  actualizarNombre(
     id: number,
     datos: { nombre: string; apellidos: string },
   ): Observable<ClientePublico> {

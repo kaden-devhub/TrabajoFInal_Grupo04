@@ -1,0 +1,74 @@
+.titulo-icono {
+  vertical-align: middle;
+  color: var(--cs-verde);
+}
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+.boton-filtrar {
+  height: 56px;
+  padding: 0 28px;
+  --mat-button-filled-container-color: #2563eb;
+}
+.rejilla {
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 16px;
+}
+.tarjeta {
+  border-radius: 16px;
+}
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+}
+.titulos {
+  flex: 1;
+  min-width: 0;
+}
+.titulos p {
+  margin: 0;
+}
+.medicamento {
+  font-weight: 600;
+}
+.farmacia,
+.fecha {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #6b7280;
+}
+.fecha {
+  font-size: 12px;
+  color: #9ca3af;
+}
+.farmacia mat-icon,
+.fecha mat-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+.derecha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.derecha .precio {
+  font-size: 18px;
+}
+@media (max-width: 700px) {
+  .filtros {
+    grid-template-columns: 1fr;
+  }
+  .rejilla {
+    grid-template-columns: 1fr;
+  }
+}
+

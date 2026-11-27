@@ -2,7 +2,7 @@ import { inject, Injectable, Service, signal } from '@angular/core';
 import { Rol, Sesion } from '../model/sesion';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/enviroment';
 
 
 const SESSION_KEY = 'comparasalud.sesion';

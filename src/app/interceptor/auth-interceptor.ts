@@ -1,8 +1,8 @@
 import { HttpInterceptorFn, HttpStatusCode } from '@angular/common/http';
-import { AuthService } from '../service/auth.service';
+import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/enviroment';
 import { catchError, EMPTY, throwError } from 'rxjs';
 
 /*

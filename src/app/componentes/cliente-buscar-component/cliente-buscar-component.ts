@@ -2,12 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatFormField, MatInput, MatLabel, MatPrefix } from '@angular/material/input';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { AuthService } from '../../service/auth.service';
-import { MedicamentoService } from '../../service/medicamento-service';
-import { FavoritoService } from '../../service/favorito-service';
+import { AuthService } from '../../services/auth.service';
+import { MedicamentoService } from '../../services/medicamento-service';
+import { FavoritoService } from '../../services/favorito-service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MedicamentoBusqueda } from '../../model/medicamento';
@@ -16,6 +16,7 @@ import { CurrencyPipe } from '@angular/common';
 import {
   MedicamentoDetalleDialogComponent
 } from '../medicamento-detalle-dialog-component/medicamento-detalle-dialog-component';
+import { ComparacionDialogComponent } from '../comparacion-dialog-component/comparacion-dialog-component';
 
 @Component({
   imports: [
@@ -31,6 +32,7 @@ import {
     MatCardActions,
     MatCheckbox,
     CurrencyPipe,
+    MatPrefix
   ],
   selector: 'app-cliente-buscar-component',
   styleUrl: './cliente-buscar-component.css',

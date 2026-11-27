@@ -1,6 +1,6 @@
 import { inject, Injectable, Service } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/enviroment';
 import { Observable } from 'rxjs';
 import { CambioOferta, NuevaOferta, Oferta } from '../model/oferta';
 

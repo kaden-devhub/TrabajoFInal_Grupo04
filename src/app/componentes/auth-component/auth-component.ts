@@ -1,9 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../service/auth.service';
-import { ClienteService } from '../../service/cliente-service';
-import { FarmaciaService } from '../../service/farmacia-service';
+import { AuthService } from '../../services/auth.service';
+import { ClienteService } from '../../services/cliente-service';
+import { FarmaciaService } from '../../services/farmacia-service';
 import { Rol } from '../../model/sesion';
 import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
 import { MatFormField, MatInput, MatLabel, MatSuffix } from '@angular/material/input';

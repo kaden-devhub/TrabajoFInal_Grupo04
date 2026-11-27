@@ -1,6 +1,6 @@
 import { inject, Injectable, Service } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/enviroment';
 import { Observable } from 'rxjs';
 import {
   Comparacion,
@@ -14,7 +14,7 @@ import {
 @Injectable({ providedIn: 'root' })
 export class MedicamentoService {
   private http = inject(HttpClient);
-  private url = environment.apiUrl;
+  private url = `${environment.apiUrl}/medicamentos`;
 
   //Buscar medicamento por nombre
 

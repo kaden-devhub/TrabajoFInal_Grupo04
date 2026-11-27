@@ -1,7 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { OfertaService } from '../../service/oferta-service';
-import { FarmaciaService } from '../../service/farmacia-service';
+import { OfertaService } from '../../services/oferta-service';
+import { FarmaciaService } from '../../services/farmacia-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FarmaciaPublica } from '../../model/farmacia';
 import { Oferta } from '../../model/oferta';

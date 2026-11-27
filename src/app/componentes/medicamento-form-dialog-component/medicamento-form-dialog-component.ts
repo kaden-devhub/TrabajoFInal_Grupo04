@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { Medicamento, MedicamentoForm } from '../../model/medicamento';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { MedicamentoService } from '../../services/medicamento-service';
 import { CategoriaService } from '../../services/categoria-service';
@@ -9,9 +9,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Categoria } from '../../model/categoria';
 import { forkJoin, of } from 'rxjs';
 import { mensajeError } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
-  imports: [],
+  imports: [
+    MatIcon,
+    MatDialogTitle,
+    MatIconButton,
+    MatDialogClose,
+    MatDialogContent,
+    MatFormField,
+    MatLabel,
+    ReactiveFormsModule,
+    MatInput,
+    MatSelect,
+    MatOption,
+    MatDialogActions,
+    MatButton,
+  ],
   selector: 'app-medicamento-form-dialog-component',
   styleUrl: './medicamento-form-dialog-component.css',
   templateUrl: './medicamento-form-dialog-component.html',

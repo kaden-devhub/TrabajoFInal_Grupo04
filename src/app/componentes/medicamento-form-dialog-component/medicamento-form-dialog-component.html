@@ -1,1 +1,75 @@
-<p>medicamento-form-dialog-component works!</p>
+<div class="dialogo-cab">
+  <span class="icono"><mat-icon>{{ esEdicion ? 'edit' : 'add_circle' }}</mat-icon></span>
+  <div class="titulos">
+    <h2 mat-dialog-title>{{ esEdicion ? 'Editar medicamento' : 'Registrar medicamento' }}</h2>
+    <p>{{ esEdicion ? 'Actualiza los datos del catálogo.' : 'Se agregará al catálogo de la plataforma.' }}</p>
+  </div>
+  <button mat-icon-button type="button" mat-dialog-close aria-label="Cerrar"><mat-icon>close</mat-icon></button>
+</div>
+
+@if (cargando()) {
+  <mat-dialog-content><p class="gris">Cargando…</p></mat-dialog-content>
+} @else {
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <mat-dialog-content>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Nombre *</mat-label>
+        <mat-icon matPrefix>medication</mat-icon>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Nombre comercial</mat-label>
+        <mat-icon matPrefix>sell</mat-icon>
+        <input matInput formControlName="nombreComercial" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Principio activo</mat-label>
+        <mat-icon matPrefix>science</mat-icon>
+        <input matInput formControlName="principioActivo" />
+      </mat-form-field>
+
+      <div class="campos">
+        <mat-form-field appearance="outline">
+          <mat-label>Concentración</mat-label>
+          <input matInput formControlName="concentracion" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Presentación</mat-label>
+          <input matInput formControlName="presentacion" />
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Laboratorio</mat-label>
+        <mat-icon matPrefix>factory</mat-icon>
+        <input matInput formControlName="laboratorio" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Categoría</mat-label>
+        <mat-icon matPrefix>category</mat-icon>
+        <mat-select formControlName="idCategoria">
+          <mat-option value="">Sin categoría</mat-option>
+          @for (c of categorias(); track c.id) {
+            <mat-option [value]="c.id">{{ c.nombre }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput rows="2" formControlName="descripcion"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="completo">
+        <mat-label>Advertencias</mat-label>
+        <mat-icon matPrefix>warning</mat-icon>
+        <textarea matInput rows="2" formControlName="advertencias"></textarea>
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button type="button" mat-dialog-close>Cancelar</button>
+      <button mat-flat-button type="submit" class="degradado" [disabled]="guardando()">
+        <mat-icon>save</mat-icon> {{ esEdicion ? 'Guardar cambios' : 'Registrar' }}
+      </button>
+    </mat-dialog-actions>
+  </form>
+}

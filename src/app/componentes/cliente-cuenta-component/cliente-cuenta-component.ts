@@ -1,14 +1,30 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ClienteService } from '../../services/cliente-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClientePublico } from '../../model/cliente';
 import { mensajeError } from '../../utils/utilidades';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormField, MatLabel } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
 
 @Component({
-  imports: [],
+  imports: [
+    MatCard,
+    MatIcon,
+    MatCardContent,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatButton,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+  ],
   selector: 'app-cliente-cuenta-component',
   styleUrl: './cliente-cuenta-component.css',
   templateUrl: './cliente-cuenta-component.html',

@@ -1,0 +1,16 @@
+.gris {
+  color: #6b7280;
+}
+.completo {
+  width: 100%;
+}
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+}
+@media (max-width: 600px) {
+  .campos {
+    grid-template-columns: 1fr;
+  }
+}

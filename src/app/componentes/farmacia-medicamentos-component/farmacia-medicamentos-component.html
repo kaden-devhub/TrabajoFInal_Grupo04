@@ -1,1 +1,64 @@
-<p>farmacia-medicamentos-component works!</p>
+<div class="pagina aparece">
+  <div class="titulo-fila">
+    <h1><mat-icon class="titulo-icono">medication</mat-icon> Medicamentos del catálogo</h1>
+    <button mat-flat-button type="button" class="degradado" (click)="registrar()">
+      <mat-icon>add</mat-icon> Registrar medicamento
+    </button>
+  </div>
+  <p class="subtitulo">Busca un medicamento por nombre para crearle una oferta o editarlo (solo los que tú registraste).</p>
+
+  <form [formGroup]="form" class="buscador" (ngSubmit)="buscar()">
+    <mat-form-field appearance="outline" class="campo" subscriptSizing="dynamic">
+      <mat-label>Nombre del medicamento</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+    <button mat-flat-button type="submit" class="degradado boton-buscar">
+      <mat-icon>search</mat-icon> Buscar
+    </button>
+  </form>
+
+  @if (resultados(); as lista) {
+    @if (lista.length) {
+      <div class="lista">
+        @for (m of lista; track m.id) {
+          <mat-card class="cs-card con-hover">
+            <mat-card-content class="fila">
+              <span class="icono"><mat-icon>medication</mat-icon></span>
+              <div class="titulos">
+                <b>{{ m.nombreComercial || m.nombre }}</b>
+                <p>
+                  {{ m.nombre }}
+                  <span class="etiqueta gris con-icono"><mat-icon>store</mat-icon> {{ m.farmacias.length }} con stock</span>
+                </p>
+              </div>
+              <button mat-flat-button type="button" class="degradado pildora" (click)="crearOferta(m)">
+                <mat-icon>sell</mat-icon> Crear oferta
+              </button>
+              <button
+                mat-icon-button
+                type="button"
+                class="editar-med"
+                matTooltip="Editar medicamento"
+                aria-label="Editar medicamento"
+                (click)="editar(m)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    } @else {
+      <div class="vacio">
+        <mat-icon>sentiment_dissatisfied</mat-icon>
+        <p>No se encontraron medicamentos. Puedes registrarlo con el botón de arriba.</p>
+      </div>
+    }
+  } @else {
+    <div class="vacio">
+      <mat-icon>search</mat-icon>
+      <p>Busca un medicamento por nombre para empezar.</p>
+    </div>
+  }
+</div>

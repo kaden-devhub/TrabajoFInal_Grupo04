@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MedicamentoService } from '../../services/medicamento-service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -8,9 +8,25 @@ import { MedicamentoBusqueda } from '../../model/medicamento';
 import { mensajeError } from '../../utils/utilidades';
 import { MedicamentoFormDialogComponent } from '../medicamento-form-dialog-component/medicamento-form-dialog-component';
 import { OfertaDialogComponent } from '../oferta-dialog-component/oferta-dialog-component';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
-  imports: [],
+  imports: [
+    MatIcon,
+    MatButton,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatCard,
+    MatCardContent,
+    MatIconButton,
+    MatTooltip,
+  ],
   selector: 'app-farmacia-medicamentos-component',
   styleUrl: './farmacia-medicamentos-component.css',
   templateUrl: './farmacia-medicamentos-component.html',

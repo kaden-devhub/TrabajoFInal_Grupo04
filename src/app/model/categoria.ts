@@ -4,3 +4,9 @@ export interface Categoria {
   nombre: string;
   descripcion?: string;
 }
+
+// POST /categorias y PUT /categorias/{id}
+export interface CategoriaForm {
+  nombre: string;
+  descripcion: string;
+}

@@ -1,0 +1,59 @@
+.gris {
+  color: #6b7280;
+}
+.dato {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  font-size: 14px;
+}
+.dato mat-icon {
+  color: #9ca3af;
+}
+h3 {
+  margin: 20px 0 8px;
+  font-size: 16px;
+}
+.promedio {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.promedio mat-icon,
+.lista mat-icon {
+  vertical-align: middle;
+}
+.pequena {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.lista li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.lista p {
+  margin: 2px 0;
+}
+.selector-estrellas {
+  display: flex;
+  margin-bottom: 8px;
+}
+.selector-estrellas mat-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+}
+.completo {
+  width: 100%;
+}
+.error {
+  color: #dc2626;
+}

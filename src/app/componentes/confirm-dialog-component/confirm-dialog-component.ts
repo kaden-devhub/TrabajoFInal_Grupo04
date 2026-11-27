@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
 import { filter, Observable } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
 
 export interface DatosConfirmacion {
   titulo: string;
@@ -11,7 +12,7 @@ export interface DatosConfirmacion {
 }
 
 @Component({
-  imports: [],
+  imports: [MatIcon, MatDialogTitle, MatDialogContent, MatDialogActions],
   selector: 'app-confirm-dialog-component',
   styleUrl: './confirm-dialog-component.css',
   templateUrl: './confirm-dialog-component.html',

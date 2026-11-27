@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { FarmaciaService } from '../../services/farmacia-service';
 import { FavoritoService } from '../../services/favorito-service';
@@ -7,9 +7,26 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FarmaciaPublica } from '../../model/farmacia';
 import { mensajeError } from '../../utils/utilidades';
+import { MatIcon } from '@angular/material/icon';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatOption, MatSelect } from '@angular/material/select';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatCard, MatCardContent } from '@angular/material/card';
 
 @Component({
-  imports: [],
+  imports: [
+    MatIcon,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatButton,
+    MatCard,
+    MatCardContent,
+    MatIconButton,
+    MatInput,
+  ],
   selector: 'app-cliente-farmacias-component',
   styleUrl: './cliente-farmacias-component.css',
   templateUrl: './cliente-farmacias-component.html',

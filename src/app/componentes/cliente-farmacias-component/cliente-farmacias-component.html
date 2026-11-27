@@ -1,1 +1,69 @@
-<p>cliente-farmacias-component works!</p>
+<div class="pagina">
+  <h1><mat-icon class="titulo-icono">store</mat-icon> Farmacias</h1>
+  <p class="subtitulo">Busca por nombre o distrito, revisa su ubicación y calificaciones.</p>
+
+  <form [formGroup]="form" class="filtros" (ngSubmit)="buscar()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre de la farmacia</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Distrito</mat-label>
+      <mat-select formControlName="distrito">
+        <mat-option value="">Todos los distritos</mat-option>
+        @for (d of distritos(); track d) {
+          <mat-option [value]="d">{{ d }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button type="submit" class="boton-buscar">
+      <mat-icon>search</mat-icon> Buscar
+    </button>
+  </form>
+
+  @if (resultados(); as lista) {
+    @if (lista.length) {
+      <div class="rejilla">
+        @for (f of lista; track f.id) {
+          <mat-card class="tarjeta">
+            <mat-card-content>
+              <div class="cabecera">
+                <span class="icono verde"><mat-icon>store</mat-icon></span>
+                <div class="titulos">
+                  <h3>{{ f.nombre }}</h3>
+                  <span class="etiqueta">{{ f.distrito }}</span>
+                </div>
+                <button
+                  mat-icon-button
+                  type="button"
+                  [title]="favoritas().has(f.id!) ? 'Quitar de favoritos' : 'Guardar en favoritos'"
+                  (click)="toggleFavorita(f.id!)"
+                >
+                  <mat-icon [class.relleno]="favoritas().has(f.id!)" [class.favorito-activo]="favoritas().has(f.id!)">favorite</mat-icon>
+                </button>
+              </div>
+
+              <div class="datos">
+                <p><mat-icon>location_on</mat-icon> {{ f.direccion }}</p>
+                <p><mat-icon>schedule</mat-icon> {{ f.horario }}</p>
+                <p><mat-icon>call</mat-icon> {{ f.telefono }}</p>
+              </div>
+
+              <button mat-stroked-button type="button" class="ver" (click)="verDetalle(f.id!)">
+                <mat-icon class="estrella relleno">star</mat-icon> Ver ubicación y calificaciones
+              </button>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    } @else {
+      <div class="vacio">
+        <mat-icon>storefront</mat-icon>
+        <p>No hay farmacias con esos filtros.</p>
+      </div>
+    }
+  }
+</div>

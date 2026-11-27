@@ -8,9 +8,25 @@ import { Oferta } from '../../model/oferta';
 import { CalificacionesFarmacia } from '../../model/calificacion';
 import { claseStock, mensajeError } from '../../utils/utilidades';
 import { OfertaDialogComponent } from '../oferta-dialog-component/oferta-dialog-component';
+import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
-  imports: [],
+  imports: [
+    MatCard,
+    MatCardContent,
+    MatIcon,
+    MatButton,
+    RouterLink,
+    CurrencyPipe,
+    MatTooltip,
+    MatIconButton,
+    DatePipe,
+  ],
   selector: 'app-farmacia-ofertas-component',
   styleUrl: './farmacia-ofertas-component.css',
   templateUrl: './farmacia-ofertas-component.html',

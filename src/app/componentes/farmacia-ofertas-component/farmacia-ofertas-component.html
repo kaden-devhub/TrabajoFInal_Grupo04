@@ -1,1 +1,85 @@
-<p>farmacia-ofertas-component works!</p>
+<div class="pagina aparece">
+  <!-- Zona de bienvenida con el resumen de la farmacia -->
+  <mat-card class="cs-card encabezado fondo-hero">
+    <mat-card-content>
+      <div class="arriba">
+        <div>
+          <p class="saludo"><mat-icon>storefront</mat-icon> ¡Hola, {{ saludo }}!</p>
+          <h1>Mis ofertas</h1>
+          <p class="subtitulo">Esto es lo que ven hoy los clientes de tu farmacia.</p>
+        </div>
+        <a mat-flat-button routerLink="/farmacia/medicamentos" class="degradado boton-nueva">
+          <mat-icon>add</mat-icon> Nueva oferta
+        </a>
+      </div>
+
+      <div class="estadisticas">
+        <div class="stat">
+          <span class="icono"><mat-icon>sell</mat-icon></span>
+          <div><b>{{ activas() }}</b><small>Ofertas activas</small></div>
+        </div>
+        <div class="stat">
+          <span class="icono" [class.rojo]="agotadas() > 0" [class.gris]="agotadas() === 0">
+            <mat-icon>production_quantity_limits</mat-icon>
+          </span>
+          <div><b>{{ agotadas() }}</b><small>Agotadas</small></div>
+        </div>
+        <div class="stat">
+          <span class="icono amarillo"><mat-icon class="relleno">star</mat-icon></span>
+          <div>
+            <b>{{ calificaciones()?.total ? calificaciones()?.promedio : '—' }}</b>
+            <small>{{ calificaciones()?.total ? 'Calificación (' + calificaciones()?.total + ')' : 'Sin calificaciones' }}</small>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  @if (ofertas(); as lista) {
+    @if (lista.length) {
+      <div class="rejilla">
+        @for (o of lista; track o.id) {
+          <mat-card class="cs-card con-hover tarjeta" [class.agotada]="o.stock <= 0">
+            <mat-card-content>
+              <div class="cabecera">
+                <span class="icono" [class.verde]="o.stock > 0" [class.gris]="o.stock <= 0">
+                  <mat-icon>medication_liquid</mat-icon>
+                </span>
+                <div class="titulos">
+                  <h3>{{ o.nombreMedicamento }}</h3>
+                  <p class="fecha"><mat-icon>schedule</mat-icon> Actualizada {{ o.fechaActualizacion | date: 'dd MMM yyyy' }}</p>
+                </div>
+                <b class="precio texto-degradado grande">{{ o.precio | currency: 'PEN' : 'S/ ' }}</b>
+              </div>
+              <div class="pie">
+                <span class="etiqueta con-icono" [class]="claseStock(o.stock)">
+                  @if (o.stock <= 0) {
+                    <mat-icon>block</mat-icon> Agotado
+                  } @else if (o.stock <= 10) {
+                    <mat-icon>warning</mat-icon> Quedan {{ o.stock }}
+                  } @else {
+                    <mat-icon>check</mat-icon> {{ o.stock }} en stock
+                  }
+                </span>
+                <span class="acciones">
+                  <button mat-button type="button" class="editar" matTooltip="Editar precio y stock" (click)="editar(o)">
+                    <mat-icon>edit</mat-icon> Editar
+                  </button>
+                  <button mat-icon-button type="button" class="borrar" matTooltip="Eliminar oferta" aria-label="Eliminar oferta" (click)="eliminar(o)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    } @else {
+      <div class="vacio">
+        <mat-icon>sell</mat-icon>
+        <p>Aún no tienes ofertas. Elige un medicamento del catálogo y publica tu primer precio.</p>
+        <a mat-flat-button class="degradado" routerLink="/farmacia/medicamentos"><mat-icon>medication</mat-icon> Ir a Medicamentos</a>
+      </div>
+    }
+  }
+</div>
